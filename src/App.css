@@ -1,6 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.App {
+  border-style: solid;
+  border-color: rgb(202, 198, 198);
+  border-radius: 20px;
+  max-width: 450px;
+  font-family: "Bebas Neue", cursive;
+}
+.App-header,
+.App {
+  margin: 20px;
+}
+.search-form {
+  padding: 6px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgb(136, 136, 136);
+  border-width: 1px;
+}
+.location {
+  text-align: right;
+  font-size: 19px;
+}
+.current-weather {
+  padding-top: 25px;
+}
+.main-info {
+  text-align: center;
+}
+ul {
+  list-style: none;
+}
+
+.add-info {
+  font-size: 20px;
+  background-color: rgb(235, 106, 74);
+  padding: 40px;
+  padding-left: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.5) 0px 8px 16px -8px;
+}
+.else {
+  position: relative;
+  left: 20px;
+}
 .weather-img {
-  height: 64px;
+  height: 120px;
 }
 .forecast-img {
   height: 40px;
+}
+.forecast-section {
+  background: rgb(230, 229, 229);
+  background: linear-gradient(
+    150deg,
+    rgb(237, 234, 234) 0%,
+    rgba(244, 243, 244, 1) 44%,
+    rgba(255, 254, 255, 1) 100%
+  );
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.forecast-info {
+  text-align: center;
+  padding: 20px;
+  padding-top: 0px;
+}
+.forecast-component {
+  background: rgb(0, 121, 251);
+  color: white;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 7px;
+}
+.forecast-component:hover {
+  transform: scale(1.1);
+  transition: 300ms;
 }
