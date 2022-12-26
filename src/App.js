@@ -2,6 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Search from "./Search";
 import Forecast from "./Forecast";
+import FormattedDate from "./FormattedDate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSmog } from "@fortawesome/free-solid-svg-icons";
 import { faWind } from "@fortawesome/free-solid-svg-icons";
@@ -21,6 +22,7 @@ function App() {
       city: response.data.name,
       wind: response.data.wind.speed,
       feeling: response.data.main.feels_like,
+      date: new Date(response.data.dt * 1000),
     });
   }
   if (weather.ready) {
@@ -47,6 +49,7 @@ function App() {
               <h1>{Math.round(weather.temperature)} C˚</h1>
             </div>
             <div className="col else">
+              <FormattedDate date={weather.date} />
               <ul className="add-info">
                 <li>
                   Humidity <FontAwesomeIcon icon={faSmog} />: {weather.humidity}

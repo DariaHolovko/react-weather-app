@@ -80,3 +80,6 @@ ul {
   transform: scale(1.1);
   transition: 300ms;
 }
+.date {
+  margin-left: 10px;
+}
