@@ -1,18 +1,15 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
-import Search from "./Search";
 import Forecast from "./Forecast";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSmog } from "@fortawesome/free-solid-svg-icons";
-import { faWind } from "@fortawesome/free-solid-svg-icons";
-import { faTemperatureFull } from "@fortawesome/free-solid-svg-icons";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import React, { useState } from "react";
 
 function App() {
   const [weather, setWeather] = useState({ ready: false });
+  const [city, setCity] = useState("Kyiv");
 
   function handleResponse(response) {
     setWeather({
@@ -25,13 +22,40 @@ function App() {
       date: new Date(response.data.dt * 1000),
     });
   }
+  function handleSubmit(event) {
+    event.preventDefault();
+    search(city);
+  }
+
+  function handleChange(event) {
+    setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "3d44d643ae2932526e55a929951219db";
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(url).then(handleResponse);
+  }
+
   if (weather.ready) {
     return (
       <div className="App">
         <header className="App-header">
           <div className="row">
             <div className="col-8">
-              <Search />
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="search"
+                  placeholder="Enter your city..."
+                  className="search-form"
+                  onChange={handleChange}
+                />
+                <input
+                  type="submit"
+                  value="Search"
+                  className="btn btn-primary"
+                />
+              </form>
             </div>
             <div className="col-4">
               <p className="location">
@@ -39,33 +63,7 @@ function App() {
               </p>
             </div>
           </div>
-          <div className="row current-weather">
-            <div className="col main-info">
-              <img
-                className="weather-img"
-                src="https://cdn-icons-png.flaticon.com/512/4064/4064269.png"
-                alt="sun and clouds"
-              />
-              <h1>{Math.round(weather.temperature)} C˚</h1>
-            </div>
-            <div className="col else">
-              <FormattedDate date={weather.date} />
-              <ul className="add-info">
-                <li>
-                  Humidity <FontAwesomeIcon icon={faSmog} />: {weather.humidity}
-                  %
-                </li>
-                <li>
-                  Wind <FontAwesomeIcon icon={faWind} />: {weather.wind}km/h
-                </li>
-                <li>
-                  {" "}
-                  Feels like <FontAwesomeIcon icon={faTemperatureFull} />:{" "}
-                  {Math.round(weather.feeling)} ˚C
-                </li>
-              </ul>
-            </div>
-          </div>
+          <WeatherInfo data={weather} />
         </header>
         <div className="App-footer">
           <Forecast />
@@ -73,9 +71,7 @@ function App() {
       </div>
     );
   } else {
-    const apiKey = "3d44d643ae2932526e55a929951219db";
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=Kyiv&appid=${apiKey}&units=metric`;
-    axios.get(url).then(handleResponse);
+    search();
     return "Loading...";
   }
 }
