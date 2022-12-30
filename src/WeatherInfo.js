@@ -1,4 +1,5 @@
 import React from "react";
+import WeatherIcon from "./weatherIcon";
 import { faSmog } from "@fortawesome/free-solid-svg-icons";
 import { faWind } from "@fortawesome/free-solid-svg-icons";
 import { faTemperatureFull } from "@fortawesome/free-solid-svg-icons";
@@ -9,11 +10,7 @@ export default function WeatherInfo(props) {
   return (
     <div className="row current-weather">
       <div className="col main-info">
-        <img
-          className="weather-img"
-          src="https://cdn-icons-png.flaticon.com/512/4064/4064269.png"
-          alt="sun and clouds"
-        />
+        <WeatherIcon code={props.data.iconURL} />
         <h1>{Math.round(props.data.temperature)} C˚</h1>
       </div>
       <div className="col else">

@@ -20,6 +20,7 @@ function App() {
       wind: response.data.wind.speed,
       feeling: response.data.main.feels_like,
       date: new Date(response.data.dt * 1000),
+      iconURL: response.data.weather[0].icon,
     });
   }
   function handleSubmit(event) {
