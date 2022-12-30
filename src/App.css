@@ -27,7 +27,13 @@
 }
 .main-info {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 10px;
+}
+.tempInfo {
+  font-size: 30px;
+}
+.temperature-link {
+  text-decoration: none;
 }
 ul {
   list-style: none;

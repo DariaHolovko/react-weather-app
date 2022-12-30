@@ -1,5 +1,6 @@
 import React from "react";
 import WeatherIcon from "./weatherIcon";
+import TemperatureDisplay from "./TemperatureDisplay";
 import { faSmog } from "@fortawesome/free-solid-svg-icons";
 import { faWind } from "@fortawesome/free-solid-svg-icons";
 import { faTemperatureFull } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +12,7 @@ export default function WeatherInfo(props) {
     <div className="row current-weather">
       <div className="col main-info">
         <WeatherIcon code={props.data.iconURL} />
-        <h1>{Math.round(props.data.temperature)} C˚</h1>
+        <TemperatureDisplay temp={Math.round(props.data.temperature)} />
       </div>
       <div className="col else">
         <FormattedDate date={props.data.date} />
