@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Forecast from "./Forecast";
 import WeatherInfo from "./WeatherInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import React, { useState } from "react";
 
