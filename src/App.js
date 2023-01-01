@@ -14,6 +14,7 @@ function App() {
   function handleResponse(response) {
     setWeather({
       ready: true,
+      coords: response.data.coord,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       city: response.data.name,
@@ -67,7 +68,7 @@ function App() {
           <WeatherInfo data={weather} />
         </header>
         <div className="App-footer">
-          <Forecast />
+          <Forecast coordinates={weather.coords} />
         </div>
       </div>
     );
