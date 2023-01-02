@@ -57,9 +57,7 @@ ul {
 .weather-img {
   height: 120px;
 }
-.forecast-img {
-  height: 40px;
-}
+
 .forecast-section {
   background: rgb(230, 229, 229);
   background: linear-gradient(
@@ -81,7 +79,7 @@ ul {
   color: white;
   border-radius: 20px;
   padding: 5px;
-  margin: 7px;
+  margin: 5px;
 }
 .forecast-component:hover {
   transform: scale(1.1);

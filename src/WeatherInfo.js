@@ -11,7 +11,7 @@ export default function WeatherInfo(props) {
   return (
     <div className="row current-weather">
       <div className="col main-info">
-        <WeatherIcon code={props.data.iconURL} />
+        <WeatherIcon code={props.data.iconURL} size={160} color="grey" />
         <TemperatureDisplay temp={Math.round(props.data.temperature)} />
       </div>
       <div className="col else">
