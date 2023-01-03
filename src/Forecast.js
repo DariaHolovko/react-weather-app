@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import ForecastDaily from "./ForecastDaily";
@@ -12,6 +12,14 @@ export default function Forecast(props) {
     setForecast(response.data.daily);
     setLoaded(true);
   }
+
+  useEffect(
+    function () {
+      setLoaded(false);
+    },
+    [props.coordinates]
+  );
+
   if (loaded) {
     return (
       <div className="forecast-section">
