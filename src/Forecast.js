@@ -28,10 +28,12 @@ export default function Forecast(props) {
           {forecast.map(function (dailyForecast, index) {
             if (index < 5) {
               return (
-                <div className="col forecast-component">
+                <div className="col forecast-component" key={index}>
                   <ForecastDaily data={dailyForecast} />
                 </div>
               );
+            } else {
+              return null;
             }
           })}
         </div>
